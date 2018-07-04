@@ -10,5 +10,13 @@ import reducer from './reducers';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// App内で使用するstoreの宣言
+const store = createStore(reducer);
+
+// Providerを使用する（Wrapする）、storeを渡す
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'));
 registerServiceWorker();
